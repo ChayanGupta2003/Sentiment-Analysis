@@ -57,7 +57,7 @@ def analyze_text(text):
 
 @app.route('/')
 def index():
-    return render_template('templates/index.html')
+    return render_template('index.html')
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
@@ -65,9 +65,9 @@ def analyze():
     result = analyze_text(text)
     if isinstance(result, tuple):
         most_common_emotion, emotion_counts = result
-        return render_template('templates/result.html', emotion=most_common_emotion, emotion_counts=emotion_counts)
+        return render_template('result.html', emotion=most_common_emotion, emotion_counts=emotion_counts)
     else:
-        return render_template('templates/result.html', emotion=result)
+        return render_template('result.html', emotion=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
