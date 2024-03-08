@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emotion Analysis Result</h1>
+    {% if emotion_counts %}
+        <p>This person may have multiple emotions:</p>
+        <ul>
+            {% for emotion, count in emotion_counts.items() %}
+                <li{% if emotion == emotion|first %} class="highlight"{% endif %}>{{ emotion }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+        <p>The most dominant emotion is <span class="highlight">{{ emotion }}</span>.</p>
+    {% else %}
+        <p>This person is <span class="highlight">{{ emotion }}</span>.</p>
+    {% endif %}
+</body>
+</html>
